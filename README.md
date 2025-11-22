@@ -2,14 +2,14 @@
 
 The central landing page for the DevToolkit suite of developer utilities.
 
-## 🚀 Tools
+## Tools
 
 This landing page links to the following tools:
 
 - **[Web Curl](https://github.com/Rajat-malhotra0/web-curl)**: A modern, web-based cURL tool.
 - **[JSON Viewer](https://github.com/Rajat-malhotra0/json-viewer)**: A powerful JSON visualization and formatting tool.
 
-## ⚙️ Configuration & Deployment
+## Configuration & Deployment
 
 This project uses a `config.js` file to manage links to the tools. This allows you to deploy the landing page separately from the tools and link to them dynamically.
 
@@ -42,10 +42,10 @@ const CONFIG = {
 };
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
 MIT
