@@ -11,36 +11,38 @@ This landing page links to the following tools:
 
 ## Configuration & Deployment
 
-This project uses a `config.js` file to manage links to the tools. This allows you to deploy the landing page separately from the tools and link to them dynamically.
+This project uses environment variables to configure links to the tools. This allows you to deploy the landing page separately from the tools and link to them dynamically.
 
-### Using .env for Configuration
+### Netlify Deployment
 
-You can use a `.env` file to configure the URLs during deployment or local development.
+1. **Set Environment Variables** in your Netlify dashboard:
+   - Go to Site settings → Build & deploy → Environment
+   - Add the following variables:
+     ```
+     WEB_CURL_URL=https://your-web-curl-deployment.netlify.app
+     JSON_VIEWER_URL=https://your-json-viewer-deployment.netlify.app
+     ```
 
-1. Create a `.env` file in the root directory:
-   ```env
-   WEB_CURL_URL=https://your-web-curl-deployment.com
-   JSON_VIEWER_URL=https://your-json-viewer-deployment.com
-   ```
+2. **Deploy**: Netlify will automatically run the build script that injects these values into the HTML.
 
-2. Run the configuration generator script:
+### Local Development
+
+1. The source file is `index.template.html` (this is what you should edit)
+2. Create a `.env` file if you want custom URLs (optional - see `.env.example`)
+3. Run the build script to generate `index.html`:
    ```bash
-   node generate-config.js
+   node build.js
    ```
-   This will update `config.js` with the values from your `.env` file.
+4. Open the generated `index.html` in your browser
 
-3. Deploy the static files (`index.html`, `style.css`, `config.js`, etc.).
+**Note**: `index.html` is gitignored because it's a generated file. Always edit `index.template.html`.
 
-### Manual Configuration
+### How It Works
 
-Alternatively, you can manually edit `config.js`:
-
-```javascript
-const CONFIG = {
-    WEB_CURL_URL: './web-curl/index.html', // Or absolute URL
-    JSON_VIEWER_URL: './json-viewer/index.html' // Or absolute URL
-};
-```
+- The `index.template.html` file is the source template containing placeholders like `%%WEB_CURL_URL%%` and `%%JSON_VIEWER_URL%%`
+- During build time (on Netlify) or when you run `build.js` locally, these placeholders are replaced with actual URLs from environment variables
+- The result is written to `index.html` (which is gitignored)
+- If environment variables are not set, it defaults to relative paths (`./web-curl/index.html`, etc.)
 
 ## Contributing
 
