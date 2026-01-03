@@ -8,6 +8,8 @@ This landing page links to the following tools:
 
 - **[Web Curl](https://github.com/Rajat-malhotra0/web-curl)**: A modern, web-based cURL tool.
 - **[JSON Viewer](https://github.com/Rajat-malhotra0/json-viewer)**: A powerful JSON visualization and formatting tool.
+- **[HTML Preview](https://html-preview-simple.netlify.app/)**: A simple web application that allows you to write HTML code and see the result instantly.
+- **[CORS Proxy](https://github.com/Rajat-malhotra0/cors-proxy)**: A lightweight CORS proxy server for the DevToolkit web-curl application.
 
 ## Configuration & Deployment
 
@@ -21,6 +23,7 @@ This project uses environment variables to configure links to the tools. This al
      ```
      WEB_CURL_URL=https://your-web-curl-deployment.netlify.app
      JSON_VIEWER_URL=https://your-json-viewer-deployment.netlify.app
+     HTML_PREVIEW_URL=https://html-preview-simple.netlify.app/
      ```
 
 2. **Deploy**: Netlify will automatically run the build script that injects these values into the HTML.
@@ -39,7 +42,7 @@ This project uses environment variables to configure links to the tools. This al
 
 ### How It Works
 
-- The `index.template.html` file is the source template containing placeholders like `%%WEB_CURL_URL%%` and `%%JSON_VIEWER_URL%%`
+- The `index.template.html` file is the source template containing placeholders like `%%WEB_CURL_URL%%`, `%%JSON_VIEWER_URL%%`, and `%%HTML_PREVIEW_URL%%`
 - During build time (on Netlify) or when you run `build.js` locally, these placeholders are replaced with actual URLs from environment variables
 - The result is written to `index.html` (which is gitignored)
 - If environment variables are not set, it defaults to relative paths (`./web-curl/index.html`, etc.)
